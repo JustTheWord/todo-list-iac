@@ -1,0 +1,18 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+data:
+  RABBITMQ_DEFAULT_USER: rmuser
+  RABBITMQ_DEFAULT_PASS: rmpassword
+  RABBITMQ_SERVER_ADDITIONAL_ERL_ARGS: -rabbit log_levels [{connection,error},{default,error}]
+    disk_free_limit 2147483648
+  AMQP_URL: amqp://rabbitmq?connection_attempts=5&retry_delay=5
+  RMQ_ADDRESS: amqp://rmuser:rmpassword@rabbitmq:5672
+  POSTGRES_USER: postgres
+  POSTGRES_PASSWORD: postgres
+  PGDATA: /data/postgres
+  SMTP_HOST: smtp-relay.brevo.com
+  SMTP_USERNAME: myusername@gmail.com
+  SMTP_PASSWORD: mypassword
