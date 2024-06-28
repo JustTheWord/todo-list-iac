@@ -22,6 +22,7 @@ kubectl apply -f postgres/
 2. Application deployment:
 
 ```bash
+kubectl apply -f namespace.yaml
 kubectl apply -f configmap.yaml
 kubectl apply -f email-sender.yaml
 kubectl apply -f scheduler.yaml
