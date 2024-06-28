@@ -3,6 +3,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: app-config
+  namespace: application
 data:
   RABBITMQ_DEFAULT_USER: rmuser
   RABBITMQ_DEFAULT_PASS: rmpassword
