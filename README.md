@@ -1,2 +1,16 @@
 # todo-list-iac
-Infrastructure as a code for a multiuser task scheduler.
+
+## The basic steps to deploy the infrastructure are:
+
+### Kubernetes steps:
+
+**Create a Kubernetes cluster (Terraform / Mannually )?:**
+
+...
+
+**Main deployment:**
+
+1. Postgres deployment:
+   - PVC (Persistent Volume Claim)
+   - Secret
+   - Deployment
