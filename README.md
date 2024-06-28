@@ -14,3 +14,17 @@
    - PVC (Persistent Volume Claim)
    - Secret
    - Deployment
+
+```bash
+kubectl apply -f postgres/
+```
+
+2. Application deployment:
+
+```bash
+kubectl apply -f configmap.yaml
+kubectl apply -f email-sender.yaml
+kubectl apply -f scheduler.yaml
+kubectl apply -f api.yaml
+kubectl apply -f service-api.yaml
+```
