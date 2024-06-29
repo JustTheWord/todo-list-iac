@@ -29,3 +29,7 @@ kubectl apply -f scheduler.yaml
 kubectl apply -f api.yaml
 kubectl apply -f service-api.yaml
 ```
+
+Do not forget to change the configmap values before deploying the application.
+
+<img src="./images/change_configmap.png" width="500" border='2px'>
