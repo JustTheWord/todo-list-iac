@@ -45,6 +45,16 @@ spec:
   resources:
     requests:
       storage: 1Gi
+# ---
+# apiVersion: v1
+# kind: Secret
+# metadata:
+#   name: postgres-secret
+#   namespace: application
+# type: Opaque
+# data:
+#   POSTGRES_USER: cG9zdGdyZXM= # base64 encoded value of "postgres"
+#   POSTGRES_PASSWORD: cG9zdGdyZXM= # base64 encoded value of "postgres"
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -252,24 +262,6 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: app-email-sender
-  namespace: application
-spec:
-  selector:
-    app: app-email-sender
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: app-scheduler
-  namespace: application
-spec:
-  selector:
-    app: app-scheduler
----
-apiVersion: v1
-kind: Service
-metadata:
   name: redis
   namespace: application
 spec:
@@ -285,7 +277,9 @@ metadata:
   namespace: application
 spec:
   ports:
-    - port: 5672
-    - port: 15672
+    - name: amqp
+      port: 5672
+    - name: management
+      port: 15672
   selector:
     app: rabbitmq

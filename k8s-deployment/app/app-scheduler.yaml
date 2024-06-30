@@ -2,21 +2,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: email-sender
+  name: app-scheduler
   namespace: application
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: email-sender
+      app: app-scheduler
   template:
     metadata:
       labels:
-        app: email-sender
+        app: app-scheduler
     spec:
       containers:
-        - name: email-sender
-          image: forsebek.azurecr.io/task-tracker-email-sender:latest
+        - name: app-scheduler
+          image: forsebek.azurecr.io/task-tracker-scheduler
           envFrom:
             - configMapRef:
                 name: app-config

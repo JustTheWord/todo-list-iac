@@ -2,21 +2,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: api
+  name: app-api
   namespace: application
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: api
+      app: app-api
   template:
     metadata:
       labels:
-        app: api
+        app: app-api
     spec:
       containers:
-        - name: api
-          image: forsebek.azurecr.io/task-tracker-api:latest
+        - name: app-api
+          image: forsebek.azurecr.io/task-tracker-api
           ports:
             - containerPort: 8080
           envFrom:
