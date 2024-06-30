@@ -4,7 +4,7 @@
 
 ### K8s cluster creation:
 
-**Create a Kubernetes cluster (Terraform / Mannually ):**
+**Create a Kubernetes cluster (Terraform / Mannually):**
 
 _TODO_
 
@@ -24,13 +24,13 @@ _TODO_
 
 ---
 
-**Do not forget to change the configmap values before deploying the application.**
+### Change the configmap values before deployment:
 
 <img src="./images/change_configmap.png" width="500" border='2px'>
 
 ---
 
-**Application deployment:**
+### Application deployment:
 
 ```bash
 kubectl apply -f app-namespace.yaml
