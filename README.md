@@ -7,17 +7,27 @@
 _There are different ways to install it (Azure CLI / Terraform / Mannually),_
 _But we recommend you to use Azure CLI_
 
----
-
 **1. [Install Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli)**
 
 **2. [Deploy an AKS cluster using Azure CLI](https://learn.microsoft.com/en-us/azure/aks/learn/quick-kubernetes-deploy-cli)**
 
 **3. [Install `kubectl` locally, use the `az aks install-cli` command](https://learn.microsoft.com/en-us/cli/azure/aks?view=azure-cli-latest#az-aks-install-cli)**
 
-### Steps to deploy the application to AKS:
+---
+
+### Create a private [Azure Container Registry](https://learn.microsoft.com/en-us/azure/container-registry/container-registry-get-started-azure-cli):
+
+**1. Create a resource group**
+
+**2. Create a container registry**
+
+**3. Log in to registry**
+
+**4. Push images to registry**
 
 ---
+
+### Steps to deploy the application to AKS:
 
 **1. Create a Namespace**
 
@@ -60,11 +70,15 @@ kubectl apply -f redis-service.yaml
 kubectl apply -f rabbitmq-service.yaml
 ```
 
+---
+
 ### Application deployment via `aks-store-quickstart.yaml`:
 
 ```bash
 kubectl apply -f aks-store-quickstart.yaml
 ```
+
+---
 
 ### Deployment is successful:
 
