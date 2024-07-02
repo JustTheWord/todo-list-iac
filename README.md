@@ -2,11 +2,18 @@
 
 <img src="./images/Kubernetes-Logo.png" width="300" align="right">
 
-### K8s cluster creation:
+### Create an [AKS](https://learn.microsoft.com/en-us/azure/aks/what-is-aks) cluster :
 
-**Create a Kubernetes cluster (Terraform / Mannually):**
+_There are different ways to install it (Azure CLI / Terraform / Mannually),_
+_But we recommend you to use Azure CLI_
 
-_TODO_
+---
+
+**1. [Install Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli)**
+
+**2. [Deploy an AKS cluster using Azure CLI](https://learn.microsoft.com/en-us/azure/aks/learn/quick-kubernetes-deploy-cli)**
+
+**3. [Install `kubectl` locally, use the `az aks install-cli` command](https://learn.microsoft.com/en-us/cli/azure/aks?view=azure-cli-latest#az-aks-install-cli)**
 
 ### Steps to deploy the application to AKS:
 
