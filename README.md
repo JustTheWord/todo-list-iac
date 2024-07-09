@@ -13,7 +13,7 @@ _But we recommend you to use Azure CLI_
 
 **3. [Install `kubectl` locally, use the `az aks install-cli` command](https://learn.microsoft.com/en-us/cli/azure/aks?view=azure-cli-latest#az-aks-install-cli)**
 
-_[Guide to setup your cluster manually via Web UI](./images/AKS-Manual/README.md)_
+_[Guide to setup your cluster manually via Web UI](./docs/AKS-Manual/README.md)_
 
 ---
 
