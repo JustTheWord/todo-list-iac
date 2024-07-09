@@ -4,7 +4,7 @@
 
 ### Create an [AKS](https://learn.microsoft.com/en-us/azure/aks/what-is-aks) cluster :
 
-_There are different ways to install it (Azure CLI / Terraform / Mannually),_
+_There are different ways to install it (Azure CLI / Terraform / Manually),_
 _But we recommend you to use Azure CLI_
 
 **1. [Install Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli)**
@@ -12,6 +12,8 @@ _But we recommend you to use Azure CLI_
 **2. [Deploy an AKS cluster using Azure CLI](https://learn.microsoft.com/en-us/azure/aks/learn/quick-kubernetes-deploy-cli)**
 
 **3. [Install `kubectl` locally, use the `az aks install-cli` command](https://learn.microsoft.com/en-us/cli/azure/aks?view=azure-cli-latest#az-aks-install-cli)**
+
+_[Guide to setup your cluster manually via Web UI](./images/AKS-Manual/README.md)_
 
 ---
 
