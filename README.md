@@ -15,7 +15,7 @@ _But we recommend you to use Azure CLI + Terraform to deploy the cluster._
 
 ### Guides:
 
-1. [Guide to setup your cluster via Azure CLI + Terraform](./docs/AKS-Terraform/README.md)
+1. [Guide to setup your cluster via Azure CLI + Terraform](./terraform/)
 
 2. [Guide to setup your cluster manually via Web UI](./docs/AKS-Manual/README.md)
 
