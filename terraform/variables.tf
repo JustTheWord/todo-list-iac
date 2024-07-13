@@ -23,8 +23,19 @@ variable "dns_label" {
   type        = string
 }
 
-# variable "acr_name" {
-#   description = "The name of the Azure Container Registry"
-#   type        = string
-# }
+variable "acr_name" {
+  description = "The name of the Azure Container Registry"
+  type        = string
+}
 
+variable "acr_sku" {
+  description = "The SKU of the Azure Container Registry"
+  type        = string
+  default     = "Standard"
+}
+
+variable "acr_admin_enabled" {
+  description = "Specifies whether the admin user is enabled for the Azure Container Registry"
+  type        = bool
+  default     = false
+}

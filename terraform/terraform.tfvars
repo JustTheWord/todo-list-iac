@@ -3,5 +3,6 @@ k8s_version         = "1.28.10"
 region              = "germanywestcentral"
 aks_cluster_name    = "forsebek"
 dns_label           = "forsebek-dns"
-# acr_name            = "forsebek"
-
+acr_name            = "forsebekacr"
+acr_sku             = "Standard"
+acr_admin_enabled   = true
