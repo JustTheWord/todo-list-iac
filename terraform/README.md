@@ -1,6 +1,6 @@
 # Create AKS, ACR using Terraform
 
-<img src="../images/AKS-Terraform/logo_terraform.png" width="100" align="right">
+<img src="../images/guide-terraform/logo_terraform.png" width="100" align="right">
 
 ### Pre-requisites:
 
@@ -37,7 +37,7 @@ az login
 ```
 
 <kbd>
-  <img src="../images/AKS-Terraform/az_login.png" width="800">
+  <img src="../images/guide-terraform/az_login.png" width="800">
 </kbd>
 
 ### Initialize terraform:
@@ -47,7 +47,7 @@ terraform init
 ```
 
 <kbd>
-  <img src="../images/AKS-Terraform/terraform_init.png" width="800">
+  <img src="../images/guide-terraform/terraform_init.png" width="800">
 </kbd>
 
 ### Plan terraform changes:
@@ -58,13 +58,13 @@ terraform plan -out tfplan
 
 <p float="left">
   <kbd>
-  <img src="../images/AKS-Terraform/terraform_plan.png" width="800" />
+  <img src="../images/guide-terraform/terraform_plan.png" width="800" />
   </kbd>
   <kbd>
-  <img src="../images/AKS-Terraform/terraform_plan_aks_created.png" width="800" />
+  <img src="../images/guide-terraform/terraform_plan_aks_created.png" width="800" />
   </kbd>
   <kbd>
-  <img src="../images/AKS-Terraform/terraform_plan_acr_created.png" width="800" />
+  <img src="../images/guide-terraform/terraform_plan_acr_created.png" width="800" />
   </kbd>
 </p>
 
@@ -76,10 +76,10 @@ terraform apply tfplan
 
 <p float="left">
   <kbd>
-  <img src="../images/AKS-Terraform/terraform_apply.png" width="800" />
+  <img src="../images/guide-terraform/terraform_apply.png" width="800" />
   </kbd>
   <kbd>
-  <img src="../images/AKS-Terraform/terraform_apply_successful.png" width="800" />
+  <img src="../images/guide-terraform/terraform_apply_successful.png" width="800" />
   </kbd>
 </p>
 
@@ -90,7 +90,7 @@ az aks get-credentials --name <cluster-name> --resource-group <resource-group-na
 ```
 
 <kbd>
-  <img src="../images/AKS-Terraform/set_new_k8s_context.png" width="800">
+  <img src="../images/guide-terraform/set_new_k8s_context.png" width="800">
 </kbd>
 
 ### Check the context:
@@ -100,7 +100,7 @@ kubectl config get-contexts`
 ```
 
 <kbd>
-<img src="../images/AKS-Terraform/check_k8s_context.png" width="800">
+<img src="../images/guide-terraform/check_k8s_context.png" width="800">
 </kbd>
 
 ---
@@ -112,7 +112,7 @@ kubectl get pods -n <namespace>
 ```
 
 <kbd>
-  <img src="../images/AKS-Terraform/k9s_verify_pods.png" width="800">
+  <img src="../images/guide-terraform/k9s_verify_pods.png" width="800">
 </kbd>
 
 ### Verify ACR:
@@ -122,5 +122,5 @@ az acr list -o table
 ```
 
 <kbd>
-  <img src="../images/AKS-Terraform/verify_acr.png" width="800">
+  <img src="../images/guide-terraform/verify_acr.png" width="800">
 </kbd>

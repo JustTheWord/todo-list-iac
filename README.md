@@ -20,6 +20,10 @@ _But we recommend you to use Azure CLI + Terraform to create necessary resources
 
 1. **Login to ACR**
 
+<kbd>
+  <img src="./images/acr_login.png" width="500">
+</kbd>
+
 2. **Push images to ACR**
 
 ---
@@ -40,7 +44,9 @@ _But we recommend you to use Azure CLI + Terraform to create necessary resources
 
 ### Change the configmap values before deployment:
 
-<img src="./images/change_configmap.png" width="500" border='2px'>
+<kbd>
+  <img src="./images/change_configmap.png" width="500">
+</kbd>
 
 ---
 
@@ -100,4 +106,6 @@ service/rabbitmq created
 
 ---
 
-<img src="./images/app_works.png" width="1000" border='2px'>
+<kbd>
+  <img src="./images/app_works.png" width="1000">
+</kbd>

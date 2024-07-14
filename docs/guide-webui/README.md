@@ -5,7 +5,7 @@
 ### Basic information:
 
 <kbd>
-  <img src="../../images/AKS-Manual/basicinfo.png" width="800" border="2px">
+  <img src="../../images/guide-webui/basicinfo.png" width="800" border="2px">
 </kbd>
 
 **1. Resource group**
@@ -19,7 +19,7 @@
 ### Setup your node pools:
 
 <kbd>
-  <img src="../../images/AKS-Manual/nodepools.png" width="800" border="2px">
+  <img src="../../images/guide-webui/nodepools.png" width="800" border="2px">
 </kbd>
 
 **1. Select a node pool**
@@ -35,7 +35,7 @@ _In our case we are limited to 4 vCPUs for the whole AKS cluster with Free accou
 ### Create or select Azure Container Registry:
 
 <kbd>
-  <img src="../../images/AKS-Manual/acr.png" width="800" border="2px">
+  <img src="../../images/guide-webui/acr.png" width="800" border="2px">
 </kbd>
 
 ---
