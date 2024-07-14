@@ -20,11 +20,15 @@ _But we recommend you to use Azure CLI + Terraform to create necessary resources
 
 1. **Login to ACR**
 
-<kbd>
-  <img src="./images/acr_login.png" width="500">
-</kbd>
+   If you create resources via Terraform,
+   you can find your ACR admin creds in the terraform output.
 
 2. **Push images to ACR**
+
+<kbd>
+  <img src="./images/acr_login.png" width="800">
+  <img src="./images/acr_push.png" width="800">
+</kbd>
 
 ---
 
