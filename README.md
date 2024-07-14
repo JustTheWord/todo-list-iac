@@ -2,16 +2,11 @@
 
 <img src="./images/Kubernetes-Logo.png" width="300" align="right">
 
-### Create an [AKS](https://learn.microsoft.com/en-us/azure/aks/what-is-aks) cluster :
+### Create [AKS](https://learn.microsoft.com/en-us/azure/aks/what-is-aks) and [ACR](https://learn.microsoft.com/en-us/azure/container-registry/):
 
-_There are different ways to install it (Azure CLI / Terraform / Manually),_
-_But we recommend you to use Azure CLI + Terraform to deploy the cluster._
-
-1. **[Install Terraform](https://learn.hashicorp.com/tutorials/terraform/install-cli)**
-
-2. **[Install Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli)**
-
-3. **[Install `kubectl` locally, use the `az aks install-cli` command](https://learn.microsoft.com/en-us/cli/azure/aks?view=azure-cli-latest#az-aks-install-cli)**
+_There are different ways to create Azure resources.
+You can create a resource either by means of `Azure CLI` or `Terraform` or `Web UI`._
+_But we recommend you to use Azure CLI + Terraform to create necessary resources._
 
 ### Guides:
 
@@ -21,15 +16,11 @@ _But we recommend you to use Azure CLI + Terraform to deploy the cluster._
 
 ---
 
-### Create a private [Azure Container Registry](https://learn.microsoft.com/en-us/azure/container-registry/container-registry-get-started-azure-cli):
+### After you create [ACR](https://learn.microsoft.com/en-us/azure/container-registry/container-registry-get-started-azure-cli):
 
-**1. Create a resource group**
+1. **Login to ACR**
 
-**2. Create a container registry**
-
-**3. Log in to registry**
-
-**4. Push images to registry**
+2. **Push images to ACR**
 
 ---
 
