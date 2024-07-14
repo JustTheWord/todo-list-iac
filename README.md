@@ -12,7 +12,7 @@ _But we recommend you to use Azure CLI + Terraform to create necessary resources
 
 1. [Guide to setup your cluster via Azure CLI + Terraform](./terraform/)
 
-2. [Guide to setup your cluster manually via Web UI](./docs/AKS-Manual/README.md)
+2. [Guide to setup your cluster manually via Web UI](./docs/guide-webui/README.md)
 
 ---
 
