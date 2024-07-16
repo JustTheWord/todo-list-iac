@@ -54,34 +54,11 @@ _But we recommend you to use Azure CLI + Terraform to create necessary resources
 
 ---
 
-### Application deployment:
+### Kubernetes deployment:
 
 ```bash
-kubectl apply -f app-namespace.yaml
-kubectl apply -f app-configmap.yaml
-kubectl apply -f postgres-pv.yaml
-kubectl apply -f postgres-pvc.yaml
-kubectl apply -f postgres-secret.yaml
-kubectl apply -f redis-pv.yaml
-kubectl apply -f redis-pvc.yaml
-kubectl apply -f postgres-deployment.yaml
-kubectl apply -f app-api.yaml
-kubectl apply -f app-email-sender.yaml
-kubectl apply -f app-scheduler.yaml
-kubectl apply -f app-scheduler.yaml
-kubectl apply -f redis-deployment.yaml
-kubectl apply -f rabbitmq-deployment.yaml
-kubectl apply -f postgres-service.yaml
-kubectl apply -f app-api-service.yaml
-kubectl apply -f redis-service.yaml
-kubectl apply -f rabbitmq-service.yaml
-```
-
----
-
-### Application deployment via `aks-store-quickstart.yaml`:
-
-```bash
+cd k8s-manifests/
+make concat
 kubectl apply -f aks-store-quickstart.yaml
 ```
 
