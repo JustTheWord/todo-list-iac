@@ -20,8 +20,8 @@ data:
   POSTGRES_PASSWORD: postgres
   PGDATA: /data/postgres
   SMTP_HOST: smtp-relay.brevo.com
-  SMTP_USERNAME: georgeweanuel@gmail.com
-  SMTP_PASSWORD: bqyHZm3J7UKdnTY9
+  SMTP_USERNAME: myusername@gmail.com
+  SMTP_PASSWORD: mypassword
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -45,16 +45,6 @@ spec:
   resources:
     requests:
       storage: 1Gi
-# ---
-# apiVersion: v1
-# kind: Secret
-# metadata:
-#   name: postgres-secret
-#   namespace: application
-# type: Opaque
-# data:
-#   POSTGRES_USER: cG9zdGdyZXM= # base64 encoded value of "postgres"
-#   POSTGRES_PASSWORD: cG9zdGdyZXM= # base64 encoded value of "postgres"
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -283,3 +273,169 @@ spec:
       port: 15672
   selector:
     app: rabbitmq
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: elasticsearch-pv
+  namespace: application
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes: [ReadWriteOnce]
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: standard
+  hostPath:
+    path: /mnt/data/elasticsearch
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: elasticsearch-pvc
+  namespace: application
+spec:
+  accessModes: [ReadWriteOnce]
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: standard
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: elasticsearch
+  namespace: application
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: elasticsearch
+  template:
+    metadata:
+      labels:
+        app: elasticsearch
+    spec:
+      containers:
+        - name: elasticsearch
+          image: docker.elastic.co/elasticsearch/elasticsearch:7.13.2
+          ports:
+            - containerPort: 9200
+            - containerPort: 9300
+          env:
+            - name: discovery.type
+              value: single-node
+          volumeMounts:
+            - name: elasticsearch-storage
+              mountPath: /usr/share/elasticsearch/data
+      volumes:
+        - name: elasticsearch-storage
+          persistentVolumeClaim:
+            claimName: elasticsearch-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: elasticsearch
+  namespace: application
+spec:
+  ports:
+    - port: 9200
+  selector:
+    app: elasticsearch
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: fluentd-config
+  namespace: application
+data:
+  fluent.conf: |-
+    <source>
+      @type tail
+      path /var/log/containers/*.log
+      pos_file /var/log/fluentd-containers.log.pos
+      time_format %Y-%m-%dT%H:%M:%S.%NZ
+      tag kubernetes.*
+      format json
+      read_from_head true
+    </source>
+    <filter kubernetes.**>
+      @type kubernetes_metadata
+    </filter>
+    <match **>
+      @type elasticsearch
+      host elasticsearch
+      port 9200
+      logstash_format true
+      logstash_prefix fluentd
+      include_tag_key true
+      type_name access_log
+    </match>
+---
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: fluentd
+  namespace: application
+spec:
+  selector:
+    matchLabels:
+      app: fluentd
+  template:
+    metadata:
+      labels:
+        app: fluentd
+    spec:
+      containers:
+        - name: fluentd
+          image: fluent/fluentd:v1.12-debian-1
+          env:
+            - name: FLUENTD_ARGS
+              value: --no-supervisor -q
+          volumeMounts:
+            - name: varlog
+              mountPath: /var/log
+            - name: config-volume
+              mountPath: /fluentd/etc
+      volumes:
+        - name: varlog
+          hostPath:
+            path: /var/log
+        - name: config-volume
+          configMap:
+            name: fluentd-config
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kibana
+  namespace: application
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kibana
+  template:
+    metadata:
+      labels:
+        app: kibana
+    spec:
+      containers:
+        - name: kibana
+          image: docker.elastic.co/kibana/kibana:7.13.2
+          ports:
+            - containerPort: 5601
+          env:
+            - name: ELASTICSEARCH_URL
+              value: http://elasticsearch:9200
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: kibana
+  namespace: application
+spec:
+  ports:
+    - port: 5601
+  selector:
+    app: kibana

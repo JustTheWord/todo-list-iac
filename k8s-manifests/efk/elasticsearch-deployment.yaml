@@ -1,0 +1,32 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: elasticsearch
+  namespace: application
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: elasticsearch
+  template:
+    metadata:
+      labels:
+        app: elasticsearch
+    spec:
+      containers:
+        - name: elasticsearch
+          image: docker.elastic.co/elasticsearch/elasticsearch:7.13.2
+          ports:
+            - containerPort: 9200
+            - containerPort: 9300
+          env:
+            - name: discovery.type
+              value: single-node
+          volumeMounts:
+            - name: elasticsearch-storage
+              mountPath: /usr/share/elasticsearch/data
+      volumes:
+        - name: elasticsearch-storage
+          persistentVolumeClaim:
+            claimName: elasticsearch-pvc
