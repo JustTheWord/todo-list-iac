@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: app-api
-          image: forsebek.azurecr.io/task-tracker-api
+          image: forsebekacr.azurecr.io/task-tracker-api
           ports:
             - containerPort: 8080
           envFrom:

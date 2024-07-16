@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: redis
-          image: forsebek.azurecr.io/redis
+          image: forsebekacr.azurecr.io/redis
           ports:
             - containerPort: 6379
           volumeMounts:

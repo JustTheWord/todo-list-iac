@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: app-scheduler
-          image: forsebek.azurecr.io/task-tracker-scheduler
+          image: forsebekacr.azurecr.io/task-tracker-scheduler
           envFrom:
             - configMapRef:
                 name: app-config

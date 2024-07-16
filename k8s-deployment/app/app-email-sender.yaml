@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: app-email-sender
-          image: forsebek.azurecr.io/task-tracker-email-sender
+          image: forsebekacr.azurecr.io/task-tracker-email-sender
           envFrom:
             - configMapRef:
                 name: app-config

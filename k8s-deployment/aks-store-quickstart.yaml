@@ -20,8 +20,8 @@ data:
   POSTGRES_PASSWORD: postgres
   PGDATA: /data/postgres
   SMTP_HOST: smtp-relay.brevo.com
-  SMTP_USERNAME: myusername@gmail.com
-  SMTP_PASSWORD: mypassword
+  SMTP_USERNAME: georgeweanuel@gmail.com
+  SMTP_PASSWORD: bqyHZm3J7UKdnTY9
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -96,7 +96,7 @@ spec:
     spec:
       containers:
         - name: postgres
-          image: forsebek.azurecr.io/postgres
+          image: forsebekacr.azurecr.io/postgres
           ports:
             - containerPort: 5432
           envFrom:
@@ -127,7 +127,7 @@ spec:
     spec:
       containers:
         - name: app-api
-          image: forsebek.azurecr.io/task-tracker-api
+          image: forsebekacr.azurecr.io/task-tracker-api
           ports:
             - containerPort: 8080
           envFrom:
@@ -151,7 +151,7 @@ spec:
     spec:
       containers:
         - name: app-email-sender
-          image: forsebek.azurecr.io/task-tracker-email-sender
+          image: forsebekacr.azurecr.io/task-tracker-email-sender
           envFrom:
             - configMapRef:
                 name: app-config
@@ -173,7 +173,7 @@ spec:
     spec:
       containers:
         - name: app-scheduler
-          image: forsebek.azurecr.io/task-tracker-scheduler
+          image: forsebekacr.azurecr.io/task-tracker-scheduler
           envFrom:
             - configMapRef:
                 name: app-config
@@ -195,7 +195,7 @@ spec:
     spec:
       containers:
         - name: redis
-          image: forsebek.azurecr.io/redis
+          image: forsebekacr.azurecr.io/redis
           ports:
             - containerPort: 6379
           volumeMounts:
@@ -223,7 +223,7 @@ spec:
     spec:
       containers:
         - name: rabbitmq
-          image: forsebek.azurecr.io/rabbitmq
+          image: forsebekacr.azurecr.io/rabbitmq
           ports:
             - containerPort: 5672
             - containerPort: 15672
