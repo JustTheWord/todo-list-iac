@@ -58,7 +58,7 @@ _But we recommend you to use Azure CLI + Terraform to create necessary resources
 
 ```bash
 cd k8s-manifests/
-make concat
+make concat  # Concatenate all the files into a single file
 kubectl apply -f aks-store-quickstart.yaml
 ```
 
@@ -83,6 +83,14 @@ service/postgres created
 service/app-api created
 service/redis created
 service/rabbitmq created
+persistentvolume/elasticsearch-pv created
+persistentvolumeclaim/elasticsearch-pvc created
+deployment.apps/elasticsearch created
+service/elasticsearch created
+configmap/fluentd-config created
+daemonset.apps/fluentd created
+deployment.apps/kibana created
+service/kibana created
 ```
 
 ---
