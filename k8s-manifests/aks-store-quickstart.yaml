@@ -117,7 +117,7 @@ spec:
     spec:
       containers:
         - name: app-api
-          image: forsebekacr.azurecr.io/task-tracker-api
+          image: forsebekacr.azurecr.io/task-tracker-api:efk
           ports:
             - containerPort: 8080
           envFrom:
@@ -284,7 +284,6 @@ spec:
     storage: 1Gi
   accessModes: [ReadWriteOnce]
   persistentVolumeReclaimPolicy: Retain
-  storageClassName: standard
   hostPath:
     path: /mnt/data/elasticsearch
 ---
@@ -298,7 +297,6 @@ spec:
   resources:
     requests:
       storage: 1Gi
-  storageClassName: standard
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -315,6 +313,13 @@ spec:
       labels:
         app: elasticsearch
     spec:
+      initContainers:
+        - name: fix-permissions
+          image: busybox
+          command: [sh, -c, chown -R 1000:1000 /usr/share/elasticsearch/data]
+          volumeMounts:
+            - name: elasticsearch-storage
+              mountPath: /usr/share/elasticsearch/data
       containers:
         - name: elasticsearch
           image: docker.elastic.co/elasticsearch/elasticsearch:7.13.2
@@ -324,6 +329,8 @@ spec:
           env:
             - name: discovery.type
               value: single-node
+            - name: ES_JAVA_OPTS
+              value: -Xms512m -Xmx512m
           volumeMounts:
             - name: elasticsearch-storage
               mountPath: /usr/share/elasticsearch/data
@@ -351,25 +358,19 @@ metadata:
 data:
   fluent.conf: |-
     <source>
-      @type tail
-      path /var/log/containers/*.log
-      pos_file /var/log/fluentd-containers.log.pos
-      time_format %Y-%m-%dT%H:%M:%S.%NZ
-      tag kubernetes.*
-      format json
-      read_from_head true
+      @type forward
+      port 24224
+      bind 0.0.0.0
     </source>
-    <filter kubernetes.**>
-      @type kubernetes_metadata
-    </filter>
     <match **>
       @type elasticsearch
+      @log_level info
       host elasticsearch
       port 9200
       logstash_format true
       logstash_prefix fluentd
       include_tag_key true
-      type_name access_log
+      type_name _doc  <!-- Ensure compatibility with Elasticsearch 7.x and above -->
     </match>
 ---
 apiVersion: apps/v1
@@ -388,7 +389,7 @@ spec:
     spec:
       containers:
         - name: fluentd
-          image: fluent/fluentd:v1.12-debian-1
+          image: govtechsg/fluentd-elasticsearch:latest
           env:
             - name: FLUENTD_ARGS
               value: --no-supervisor -q

@@ -14,6 +14,13 @@ spec:
       labels:
         app: elasticsearch
     spec:
+      initContainers:
+        - name: fix-permissions
+          image: busybox
+          command: [sh, -c, chown -R 1000:1000 /usr/share/elasticsearch/data]
+          volumeMounts:
+            - name: elasticsearch-storage
+              mountPath: /usr/share/elasticsearch/data
       containers:
         - name: elasticsearch
           image: docker.elastic.co/elasticsearch/elasticsearch:7.13.2
@@ -23,6 +30,8 @@ spec:
           env:
             - name: discovery.type
               value: single-node
+            - name: ES_JAVA_OPTS
+              value: -Xms512m -Xmx512m
           volumeMounts:
             - name: elasticsearch-storage
               mountPath: /usr/share/elasticsearch/data

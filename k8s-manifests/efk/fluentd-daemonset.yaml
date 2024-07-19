@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: fluentd
-          image: fluent/fluentd:v1.12-debian-1
+          image: govtechsg/fluentd-elasticsearch:latest
           env:
             - name: FLUENTD_ARGS
               value: --no-supervisor -q

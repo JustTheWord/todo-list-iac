@@ -18,14 +18,14 @@ FILES := \
     app/app-api-service.yaml \
     redis/redis-service.yaml \
     rabbitmq/rabbitmq-service.yaml \
-		efk/elasticsearch-pv.yaml \
-		efk/elasticsearch-pvc.yaml \
-		efk/elasticsearch-deployment.yaml \
-		efk/elasticsearch-service.yaml \
-		efk/fluentd-configmap.yaml \
-		efk/fluentd-daemonset.yaml \
-		efk/kibana-deployment.yaml \
-		efk/kibana-service.yaml
+	efk/elasticsearch-pv.yaml \
+	efk/elasticsearch-pvc.yaml \
+	efk/elasticsearch-deployment.yaml \
+	efk/elasticsearch-service.yaml \
+	efk/fluentd-configmap.yaml \
+	efk/fluentd-daemonset.yaml \
+	efk/kibana-deployment.yaml \
+	efk/kibana-service.yaml
 
 
 
