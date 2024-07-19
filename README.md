@@ -32,17 +32,17 @@ _But we recommend you to use Azure CLI + Terraform to create necessary resources
 
 ---
 
-### Steps to deploy the application to AKS:
+### Steps to deploy the application to [AKS](https://learn.microsoft.com/en-us/azure/aks/what-is-aks):
 
-**1. Create a Namespace**
+1. **Create a Namespace**
 
-**2. Create a ConfigMap/Secret for Environment Variables**
+2. **Create a ConfigMap/Secret for Environment Variables**
 
-**3. Create PersistentVolume and PersistentVolumeClaim**
+3. **Create PersistentVolume and PersistentVolumeClaim**
 
-**4. Create Deployments for Each Service**
+4. **Create Deployments for each Application Component**
 
-**5. Create Services for Each Deployment**
+5. **Create Services for each Deployment**
 
 ---
 
