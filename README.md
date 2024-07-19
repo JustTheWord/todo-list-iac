@@ -93,8 +93,14 @@ deployment.apps/kibana created
 service/kibana created
 ```
 
----
-
 <kbd>
   <img src="./images/app_works.png" width="1000">
+</kbd>
+
+---
+
+### Kibana dashboard:
+
+<kbd>
+  <img src="./images/dashboard.png" width="1000">
 </kbd>
