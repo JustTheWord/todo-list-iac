@@ -99,6 +99,14 @@ service/kibana created
 
 ---
 
+**External IP:**
+
+<kbd>
+  <img src="./images/external_ip.png" width="1000">
+</kbd>
+
+---
+
 ### Kibana dashboard:
 
 <kbd>
