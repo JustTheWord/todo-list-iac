@@ -117,7 +117,7 @@ spec:
     spec:
       containers:
         - name: app-api
-          image: forsebekacr.azurecr.io/task-tracker-api:efk
+          image: forsebekacr.azurecr.io/task-tracker-api:latest
           ports:
             - containerPort: 8080
           envFrom:
@@ -333,6 +333,8 @@ spec:
               value: single-node
             - name: ES_JAVA_OPTS
               value: -Xms512m -Xmx512m
+            - name: xpack.security.enabled
+              value: 'false'
           volumeMounts:
             - name: elasticsearch-storage
               mountPath: /usr/share/elasticsearch/data
@@ -373,6 +375,7 @@ data:
       logstash_prefix fluentd
       include_tag_key true
       type_name _doc  <!-- Ensure compatibility with Elasticsearch 7.x and above -->
+      suppress_type_name true
     </match>
 ---
 apiVersion: apps/v1
@@ -407,6 +410,19 @@ spec:
         - name: config-volume
           configMap:
             name: fluentd-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fluentd
+  namespace: application
+spec:
+  selector:
+    app: fluentd
+  ports:
+    - protocol: TCP
+      port: 24224
+      targetPort: 24224
 ---
 apiVersion: apps/v1
 kind: Deployment
