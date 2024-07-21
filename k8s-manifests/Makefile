@@ -24,6 +24,7 @@ efk/elasticsearch/elasticsearch-deployment.yaml \
 efk/elasticsearch/elasticsearch-service.yaml \
 efk/fluentd/fluentd-configmap.yaml \
 efk/fluentd/fluentd-daemonset.yaml \
+efk/fluentd/fluentd-service.yaml \
 efk/kibana/kibana-deployment.yaml \
 efk/kibana/kibana-service.yaml
 
