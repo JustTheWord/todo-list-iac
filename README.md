@@ -99,10 +99,18 @@ service/kibana created
 
 ---
 
-**External IP:**
+**[ External IP: ](https://learn.microsoft.com/en-us/azure/aks/internal-lb?tabs=set-service-annotations)**
 
 <kbd>
   <img src="./images/external_ip.png" width="1000">
+</kbd>
+
+---
+
+### Rest API requests:
+
+<kbd>
+  <img src="./images/rest_requests.png" width="1000">
 </kbd>
 
 ---
