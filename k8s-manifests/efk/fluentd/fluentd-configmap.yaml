@@ -20,4 +20,5 @@ data:
       logstash_prefix fluentd
       include_tag_key true
       type_name _doc  <!-- Ensure compatibility with Elasticsearch 7.x and above -->
+      suppress_type_name true
     </match>
