@@ -109,6 +109,10 @@ service/kibana created
 
 ### Rest API requests:
 
+_Pay attention to difference in response time between the first and the second request.
+It is due to the fact that `without cache` there is `artificial delay` with `Thread.sleep(2500)` in the code.
+The second request `is faster` because the response is `cached with Hazelcast`, where is no delay._
+
 <kbd>
   <img src="./images/rest_requests.png" width="1000">
 </kbd>
